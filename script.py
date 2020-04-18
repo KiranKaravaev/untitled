@@ -1,8 +1,8 @@
 import time
 import pyautogui
+from tkinter import *
 import math
 from selenium import webdriver
-
 
 def find_name_click_wait(driver, name, time_wait):
     element = driver.find_element_by_class_name(name)
@@ -98,20 +98,25 @@ def main():
 
     # build department
 
-    '''
+    # auto work
     find_name_click_wait(driver, 'item_menu.work_menu.ajax_action.header_menu_item.tc', 1)  # work
-    find_name_click_wait(driver, 'dot.hov2.factory_slide', 1)  # factory
-    find_name_click_wait(driver, 'factory_whose.hov2.wrap50.tc.pointer.width520.float_left', 1)  # region factory
-    find_name_click_wait(driver, 'button_green.region_details_move', 1)  # region_move
-    find_id_click_wait(driver, 'move_here', 1)  # move
-    find_id_click_wait(driver, 'move_here_ok', 1)  # move_ok
-    find_name_click_wait(driver, 'header_buttons_hover_close', 1)  # close
-    '''
+    if exist_class_name(driver, 'tip.button_white.no_pointer'):  # exist white btn work
+        find_name_click_wait(driver, 'dot.hov2.factory_slide', 1)  # factory
+        find_name_click_wait(driver, 'factory_whose.hov2.wrap50.tc.pointer.width520.float_left', 1)  # region factory
+        find_name_click_wait(driver, 'button_green.region_details_move', 1)  # region_move
+        find_id_click_wait(driver, 'move_here', 1)  # move
+        find_id_click_wait(driver, 'move_here_ok', 1)  # move_ok
+        find_name_click_wait(driver, 'header_buttons_hover_close', 1)  # close
+        find_name_reload(driver,  'tip.button_white.no_pointer', 1)
+    if exist_class_name(driver, 'work_w_autom.button_red.tip'):
+        find_name_click_wait(driver, 'work_w_autom.button_red.tip', 1)  # auto work
+
+    # auto war
+    driver.get('https://rivalregions.com/#war/details/318310')
+    time.sleep(1)
+
     time.sleep(10000)
     driver.quit()
-'''
-fghjklfhgkgjkkfhfhf
-'''
 
 if __name__ == '__main__':
     main()
